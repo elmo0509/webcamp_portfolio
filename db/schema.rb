@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_015610) do
+ActiveRecord::Schema.define(version: 2021_11_14_032905) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -36,6 +36,67 @@ ActiveRecord::Schema.define(version: 2021_11_13_015610) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "introduction_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "introduction_comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "introduction_id", null: false
+    t.text "commtent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "introductions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "place", null: false
+    t.string "author", null: false
+    t.string "title"
+    t.string "address_prefecture", null: false
+    t.string "address_after_prefecture", null: false
+    t.string "address_building_name"
+    t.text "introduction", null: false
+    t.boolean "is_closed", default: false, null: false
+    t.boolean "admin_is_closed", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_maps", force: :cascade do |t|
+    t.integer "introduction_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "nickname", null: false
+    t.string "image_id"
+    t.text "introduction"
+    t.boolean "is_deleted", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

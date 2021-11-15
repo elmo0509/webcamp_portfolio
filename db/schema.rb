@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2021_11_14_032905) do
     t.string "place", null: false
     t.string "author", null: false
     t.string "title"
-    t.string "address_prefecture", null: false
+    t.integer "address_prefecture", default: 0, null: false
     t.string "address_after_prefecture", null: false
     t.string "address_building_name"
     t.text "introduction", null: false

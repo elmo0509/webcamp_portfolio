@@ -84,3 +84,7 @@ gem 'activeadmin'
 
 # enum管理
 gem 'enum_help'
+
+#Rubcop導入, 必要に応じて使用するため、require:false
+gem 'rubocop', require:false
+gem 'rubocop-rails', require:false

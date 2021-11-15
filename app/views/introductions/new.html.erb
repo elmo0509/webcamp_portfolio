@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>新規投稿画面</h2>
+  <form>
+    <%= form_with model:@introduction, url:new_introduction_path, local:true do |f| %>
+
+      <div class="form-group row">
+        <%= f.label :place, "スポット名" %><br />
+        <%= f.text_field :place, autofocus: true %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :author, "作者名" %><br />
+        <%= f.text_field :author, autofocus: true %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :title, "作品名" %><br />
+        <%= f.text_field :title, autofocus: true %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :address_prefecture, "住所(都道府県)" %><br />
+        <%= f.select :address_prefecture, Introduction.address_prefectures.keys, {} %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :address_after_prefecture, "住所(都道府県以降)" %><br />
+        <%= f.text_field :address_after_prefecture, autofocus: true %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :address_building_name, "建物名" %><br />
+        <%= f.text_field :address_building_name, autofocus: true %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :introduction, "紹介文" %><br />
+        <%= f.text_field :introduction, autofocus: true %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "保存する" %>
+      </div>
+    <% end %>
+  </form>
+</div>
